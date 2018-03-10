@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Invoice</title>
+</head>
+<body>
+    <img src="logo.png">
+
+    <h1 style="border-bottom: 2px solid black">RV COLLEGE OF ENGINEERING</h1>
+    <h1 style="text-align: center;">Invoice</h1>
+    <h3 style="text-align: center;border-bottom: 2px solid black">Ticket id:{{ primary }}</h3>
+    <h2> Name = {{ user_name }}</h2>
+    <h2> {{ monument_name}}</h2>
+
+    </div>
+    <table>
+        <thead>
+            <td>Category</td>
+            <td>Price</td>
+            <td>Quantity</td>
+            <td>Total</td>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Adult</td>
+                <td>{{ adult_ticket_rate }}</td>
+                <td>{{ adult_no }}</td>
+                <td>{{adult_total}}</td>
+            </tr>
+            <tr>
+                <td>Child</td>
+                <td>{{ child_ticket_rate }}</td>
+                <td>{{ child_no }}</td>
+                <td>{{child_total}}</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td>Total</td>
+                <td>{{ total }}</td>
+            </tr>
+        </tbody>
+
+
+    </table>
+
+</body>
+</html>
+

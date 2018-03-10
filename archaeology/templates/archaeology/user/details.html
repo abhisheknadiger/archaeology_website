@@ -1,0 +1,155 @@
+{% extends 'archaeology/base.html' %}
+{% block title %} {{ user_det.get_name }} {% endblock %}
+{% block body %}
+<div style="float: right"><button type="button" class="btn"><a style="text-decoration: none;color: black;" href="{% url 'archaeology:logout_user' %}">Logout</a></button></div>
+     <fieldset><table>
+         <thead>
+         <tr>
+             <td><h1>Name :</h1></td>
+             <td><h1>{{ user_det.name }}</h1></td>
+         </tr>
+         </thead>
+         <tbody>
+         <tr>
+             <td><h2>Email:</h2></td>
+             <td><h2>{{ user_det.email }}</h2></td>
+         </tr>
+         <tr>
+             <td><h2>Username:</h2></td>
+             <td><h2>{{ user_det.username }}</h2></td>
+         </tr>
+         <tr>
+             <td><h2>Contact :</h2></td>
+             <td><h2>{{ user_det.contact_no }}</h2></td>
+         </tr>
+         <tr>
+             <td><h2>Type :</h2></td>
+             <td><h2>{{ user_det.user_type   }}&nbsp&nbsp&nbsp&nbsp&nbsp
+                 {%  if not  user_det.is_premium %}
+
+                 <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Upgrade</button></h2></td>
+                     {% endif %}
+         </tr>
+         </tbody>
+     </table>
+
+
+
+<!-- Modal -->
+
+
+     
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Upgrade </h4>
+      </div>
+      <div class="modal-body">
+          <h2>Explore Archaeological Publications in a better way</h2>
+          <h3>Upgarde in  just 1000Rs </h3>
+        <p><a href="{% url 'archaeology:upgrade'%}">Upgrade</a></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<div class="row">
+    <div class="col-md-2">
+        <h3>Comments:&nbsp</h3></div>
+    <div class="col-md-3">
+    {% if comments or comments2 or comments3 %}
+    {% for feedback in comments %}
+        <div class="container">
+                <div class="well">
+                    <h2>{{ feedback.monument.name }}</h2>
+                    <h4><a href="{% url 'archaeology:delete_monument_feedback' feedback.pk %}">Delete</a></h4>
+                    <h3>{{ feedback.text }}
+                    </h3>
+                </div>
+            </div>
+    {% endfor %}
+    {% for feedback in comments2 %}
+        <div class="container">
+                <div class="well">
+                    <h2>{{ feedback.artifact.name }}</h2>
+                    <h4><a href="{% url 'archaeology:delete_artifact_feedback' feedback.pk %}">Delete</a></h4>
+                    <h3>{{ feedback.text }}
+
+                    </h3>
+                </div>
+            </div>
+    {% endfor %}
+    {% for feedback in comments3 %}
+        <div class="container">
+                <div class="well">
+                    <h2>{{ feedback.musuem.name }}</h2>
+                    <h4><a href="{% url 'archaeology:delete_museum_feedback' feedback.pk %}">Delete</a></h4>
+                    <h3>{{ feedback.text }}
+                    </h3>
+                </div>
+            </div>
+    {% endfor %}
+        {% else %}
+            <h2>You have not commented anywhere</h2>
+    {% endif %}
+    </div>
+</div>
+
+    <div class="col-md-2">
+        <h3>Tickets:&nbsp</h3></div>
+    <div class="col-md-3">
+
+    {% if tick or tick1 or tick2 %}
+    {% for feedback in tick %}
+        <div class="container">
+                <div class="well">
+                    <h2>{{ feedback.ticket.monument.name }}<h4>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="{% url 'archaeology:museum_ticket_download' feedback.pk %}" >View ticket</a></h4></h2>
+                    <h3>{{ feedback.amount }}
+                    </h3>
+
+
+                </div>
+            </div>
+    {% endfor %}
+    {% for feedback in tick1 %}
+        <div class="container">
+                <div class="well">
+                    <h2>{{ feedback.Excavation_ticket.excavation.name }}<h4>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="{% url 'archaeology:museum_ticket_download' feedback.pk %}" >View ticket</a></h4></h2>
+                    <h3>{{ feedback.amount }}
+                    </h3>
+
+
+                </div>
+            </div>
+    {% endfor %}
+    {% for feedback in tick2 %}
+        <div class="container">
+                <div class="well">
+                    <h2>{{ feedback.Museum_ticket.museum.name }}<h4>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="{% url 'archaeology:museum_ticket_download' feedback.pk %}" >View ticket</a></h4></h2>
+                    <h3>{{ feedback.amount }}
+                    </h3>
+
+
+                </div>
+            </div>
+    {% endfor %}
+        {% else %}
+        <h1>You have not buyed any tickets</h1>
+    {% endif %}
+    </div>
+    <br><br><br><br><br><br>
+    </fieldset>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'archaeology/base.html' %}
+{% block title %} {{ monument.name }} {% endblock %}
+{% block body %}
+{% load staticfiles %}
+<h2><b>Feedbacks</b>
+    <fieldset>
+        {% for feedback in feedback_user %}
+            <div class="container">
+                <div class="well">
+                    <h3>{{ feedback.user.get_username }}</h3>
+                    <p>{{ feedback.text }}
+                    </p>
+                </div>
+            </div>
+        {% endfor %}
+
+    </fieldset>
+    <fieldset>
+        {% for feedback in feedback_user1 %}
+            <div class="container">
+                <div class="well">
+                    <h3>{{ feedback.user.get_username }}</h3>
+                    <p>{{ feedback.text }}
+                    </p>
+                </div>
+            </div>
+        {% endfor %}
+
+    </fieldset>
+    <fieldset>
+        {% for feedback in feedback_user2 %}
+            <div class="container">
+                <div class="well">
+                    <h3>{{ feedback.user.get_username }}</h3>
+                    <p>{{ feedback.text }}
+                    </p>
+                </div>
+            </div>
+        {% endfor %}
+
+    </fieldset>
+{% endblock %}

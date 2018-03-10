@@ -1,0 +1,76 @@
+{% extends 'archaeology/base.html' %}
+{% block title %} {{ user_det.get_name }}{% endblock %}
+{% block body %}
+    <div style="float: right"><button type="button" class="btn"><a style="text-decoration: none;color: black;" href="{% url 'archaeology:logout_user' %}">Logout</a></button></div>
+    <div class="row">
+<div class="col-md-3    " style="text-align: center;"><h3>Excavation</h3></div>
+
+        <div class="col-md-3    "><br><button type="button" class="btn btn-success" ><a style="text-decoration: none;color: white;" href=" {% url 'archaeology:add_excavation' %}">ADD</a></button></div>
+
+        <div class="col-md-3   "><br><button type="button" class="btn btn-danger" ><a style="text-decoration: none;color: white;" href=" {% url 'archaeology:ddelete_excavation' %}">DELETE</a></button></div>
+
+<div class="col-md-3    "></div>
+</div>
+    <div class="row">
+<div class="col-md-3    " style="text-align: center;"><h3>Monument</h3></div>
+
+        <div class="col-md-3    "><br><button type="button" class="btn btn-success" ><a style="text-decoration: none;color: white;" href="{% url 'archaeology:add_monument' %}">ADD</a></button></div>
+
+        <div class="col-md-3   "><br><button type="button" class="btn btn-danger" ><a style="text-decoration: none;color: white;" href="{% url 'archaeology:ddelete_monument' %}">DELETE</a></button></div>
+
+<div class="col-md-3   "></div>
+</div>
+<div class="row">
+<div class="col-md-3    " style="text-align: center;"><h3>Artifact</h3></div>
+
+<div class="col-md-3  "><br><button type="button" class="btn btn-success" ><a style="text-decoration: none;color: white;" href="{% url 'archaeology:add_artifact' %}">ADD</a></button></div>
+
+<div class="col-md-3   "><br><button type="button" class="btn btn-danger" ><a style="text-decoration: none;color: white;" href="{% url 'archaeology:ddelete_artifact' %}">DELETE</a></button></div>
+
+<div class="col-md-3    "></div>
+</div>
+<div class="row">
+<div class="col-md-3    " style="text-align: center;"><h3>Library</h3></div>
+
+<div class="col-md-3   "><br><button type="button" class="btn btn-success" ><a style="text-decoration: none;color: white;" href="{% url 'archaeology:add_library' %}">ADD</a></button></div>
+
+<div class="col-md-3    "><br><button type="button" class="btn btn-danger" ><a style="text-decoration: none;color: white;" href="{% url 'archaeology:ddelete_library' %}">DELETE</a></button></div>
+
+<div class="col-md-3    "></div>
+</div>
+    <div class="row">
+<div class="col-md-3    " style="text-align: center;"><h3>Museum</h3></div>
+
+<div class="col-md-3    "><br><button type="button" class="btn btn-success" ><a style="text-decoration: none;color: white;" href="{% url 'archaeology:add_museum' %}">ADD</a></button></div>
+
+<div class="col-md-3    "><br><button type="button" class="btn btn-danger" ><a style="text-decoration: none;color: white;" href="{% url 'archaeology:ddelete_museum' %}">DELETE</a></button></div>
+
+<div class="col-md-3    "></div>
+    </div>
+        <div class="row">
+<div class="col-md-3    " style="text-align: center;"><h3>Project</h3></div>
+
+<div class="col-md-3    "><br><button type="button" class="btn btn-success" ><a style="text-decoration: none;color: white;" href="{% url 'archaeology:add_project' %}">ADD</a></button></div>
+
+<div class="col-md-3    "><br><button type="button" class="btn btn-danger" ><a style="text-decoration: none;color: white;" href="{% url 'archaeology:ddelete_project' %}">DELETE</a></button></div>
+
+<div class="col-md-3    "></div>
+        </div>
+   <h2>Messages</h2>
+    <fieldset>
+        {% if msg %}
+
+        {% for feedback in msg %}
+            <div class="container">
+                <div class="well">
+                    <h3>{{ feedback.name }}</h3>
+                    <p>{{ feedback.message }}
+                    </p>
+                </div>
+            </div>
+        {% endfor %}
+            {% else %}
+            <h2>There are no messages</h2>
+    {% endif %}
+    </fieldset>
+{% endblock %}

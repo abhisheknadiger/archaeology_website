@@ -1,0 +1,23 @@
+{% extends 'archaeology/base.html' %}
+{% block title %}Delete {{ title  }} {% endblock %}
+{% block body %}
+
+{% if all_monument %}
+    <div class="container-fluid" style="display: inline;">
+    {% for museums in all_monument %}
+        <div class="list-group">
+            <div class="row list-group-item" style="border: 2px solid black;margin-left:5px;margin-right: 85%; " >
+                    <div class="list-group">
+                        <h3>{{ museums.name }}</h3>
+                       <button type="button" class="btn btn-danger"><a style="text-decoration: none;color: white;" href="/delete/{{ title }}/{{ museums.pk }}"  class=" active">Delete</a></button>
+                    </div>
+            </div>
+        </div>
+         <BR><BR>
+    {% endfor %}
+    </div>
+{% else %}
+    <h1>There are no {{ title }} to delete</h1>
+{% endif %}
+
+{% endblock %}

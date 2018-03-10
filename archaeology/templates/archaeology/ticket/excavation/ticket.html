@@ -1,0 +1,37 @@
+{% extends 'archaeology/base.html' %}
+{% block title %}Ticket{% endblock %}
+{% block body %}
+
+<div class="container">
+    <h2>Bill</h2>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Category</th>
+            <th>Price/per Person</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Adult</td>
+            <td>{{ tick.adult_ticket_rate }}</td>
+        </tr>
+        <tr>
+            <td>Child</td>
+            <td>{{ tick.child_ticket_rate }}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<legend><h3>Buy tickets</h3></legend>
+<form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {% include 'archaeology/form_template.html' %}
+                        <br>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-success">Submit</button>
+                            </div>
+                        </div><br>
+                    </form>
+{% endblock %}

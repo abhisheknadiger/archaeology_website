@@ -1,0 +1,12 @@
+{% extends 'archaeology/base.html' %}
+
+{% block title%}Error {% endblock %}
+{% block body %}
+    <h1>{{ error_pre_message }}</h1>
+    {% if url %}
+    <p><a href="{{ url }}"  >{{ error_message }}</a></p>
+        {% else  %}
+        <p><a href="/">{{ error_message }}</a></p>
+    {% endif %}
+    {{ error_post_message }}
+{% endblock %}

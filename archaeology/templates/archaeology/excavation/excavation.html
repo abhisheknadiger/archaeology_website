@@ -1,0 +1,28 @@
+{% extends 'archaeology/base.html' %}
+{% block title %}Excavation {% endblock %}
+{% block body %}
+
+{% if all_excavation %}
+    <div class="container-fluid">
+    {% for museums in all_excavation %}
+        <div class="list-group">
+            <div class="row list-group-item" style="border: 2px solid black " >
+                <div class="col-sm-4"> <img src="{{ museums.photo.url }}" class ="img-circle" alt="{{ museums.name }}"> </div>
+                <div class="col-sm-8">
+                    <div class="list-group">
+                        <a href="{% url 'archaeology:excavation_details' museums.id %}" class="list-group-item active">
+                        <h4 class="list-group-item-heading">{{ museums.name }}</h4>
+                    <p class="list-group-item-text">{{ museums.location }}</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+         <BR><BR>
+    {% endfor %}
+    </div>
+{% else %}
+    <h1>There are no excavation to display</h1>
+{% endif %}
+
+{% endblock %}

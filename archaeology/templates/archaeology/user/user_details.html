@@ -1,0 +1,23 @@
+{% extends 'archaeology/base.html' %}
+{% block title %} Publications {% endblock %}
+{% block body%}
+{% if public %}
+    <div class="container-fluid">
+     {% for publication in public %}
+        <div class="list-group">
+            <div class="row list-group-item" style="border: 2px solid black " >
+                <div class="col-sm-4"> <embed src ="{{ publication.paper.url }}" ></embed> </div>
+                <div class="col-sm-8">
+                    <div class="list-group">
+            <a style="text-decoration: none;color:black;" href="{% url 'archaeology:view_publication' publication.pk %}"><h1>{{ publication.name }}</h1></a>
+            <a style="text-decoration: none;color:black;" href="{% url 'archaeology:delete_publication' publication.pk %}"><h1>Delete Publication</h1></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+         <BR><BR>
+    {% endfor %}
+    {% else %}
+        <h2>There are no publications avalaible</h2>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'archaeology/base.html' %}
+
+{% block body %}
+    <div id="body" class="width">
+
+
+   <aside class="sidebar big-sidebar left-sidebar">
+
+           <ul>
+               <li>
+                    <h4>Categories</h4>
+                    <ul>
+                        <li><a href="{% url 'archaeology:museum' %}">Museum</a></li>
+                        <li><a href="{% url 'archaeology:monument' %}">Monument</a></li>
+                        <li><a href="{% url 'archaeology:artifact' %}">Artifact</a></li>
+                    </ul>
+                </li>
+                <li class="bg">
+                    <h4>About site</h4>
+                    <ul>
+                        <li class="text">
+                        	<p style="margin: 0;">The site has details about the Monuments, Musuems  <a href="{% url 'archaeology:logout_user' %}#" class="readmore">Read More &raquo;</a></p>
+                        </li>
+                    </ul>
+                </li>
+
+
+            </ul>
+
+        </aside>
+
+		<section id="content" class="two-column">
+            <div id="container">
+    <div id="header"><h2>National Mission on Monuments and Antiquities</h2></div>
+  <div id="wrapper">
+
+     <p style="font-size: 18;">       India has an extraordinarily rich, vast and diverse cultural heritage in the form of built heritage, archaeological sites and remains since prehistoric times.
+    The sheer magnitude in number alone is overwhelming and these are the symbols of both cultural expression and evolution.There now appears to prevail a fundamental lack of knowledge,
+    understanding and, perhaps, interest in our past: in what constitutes the heritage of India, the process that governed its coming into being, and how this heritage relates to the people.
+    Its manifestations expressed in cultural forms are losing their traditional essence in rapidly transforming lifestyles in an era of industrial growth.
+    There is, however, no comprehensive record in the form of database where such archaeological resources in terms of built heritage, sites and antiquities can be referred. As a result this finite, non-renewable and irreversible
+    resource of our country is fast disappearing without any record for the posterity. Therefore there is an urgent need for a proper survey of such resources,
+    and based on that an appropriate archaeological heritage resource management and policy can be formulated.
+     </p>
+
+
+        </section>
+
+
+    	<div class="clear"></div>
+    </div>
+
+{% endblock %}
+{% block foot %}
+{% endblock %}

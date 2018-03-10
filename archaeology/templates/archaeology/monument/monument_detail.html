@@ -1,0 +1,62 @@
+{% extends 'archaeology/base.html' %}
+{% block title %} {{ monument.name }} {% endblock %}
+{% block body %}
+{% load staticfiles %}
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-6">
+                <img src="{{ monument.photo.url }}" style="width: 600px;height: 450px" alt="{{ monument.name }}">
+            </div>
+            <div class="col-sm-6" >
+                <h1 style=""><font size="+7">{{ monument.name }}</font></h1>
+                <h2>{{ monument.location }}</h2>
+            <br>
+                <h3>Opening Time: {{ monument.opening_time }}</h3>
+                <h3>Closing Time: {{ monument.closing_time }}</h3>
+                <h3>
+                {% if monument.holiday %}
+                    It remains closed on {{ monument.get_holiday_display }}
+                {% else %}
+                    It is open everyday
+                {% endif %}
+                </h3>    <!-- Trigger the modal with a button -->
+                {% if tick %}
+                    <h2><a href="{% url 'archaeology:monument_ticket'  monument.pk%}">Buy Ticket</a></h2>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <h2 >Description</h2>
+    <fieldset>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8">{{ monument.desc }}</div>
+            <div class="col-sm-2"></div>
+        </div>
+    </div>
+    </fieldset>
+
+    <h2><b>Feedbacks</b>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+        <button type="button" class="btn btn-primary"><a href="{% url 'archaeology:add_feedback' monument.pk%}" style="font-size: 25px;">Give feedback</a></button></h2>
+    <fieldset>
+        {% for feedback in feedback_user %}
+            <div class="container">
+                <div class="well">
+                    <h3>{{ feedback.user.get_username }}</h3>
+                    <p>{{ feedback.text }}
+                    </p>
+                </div>
+            </div>
+        {% endfor %}
+
+    </fieldset>
+
+
+
+    <br>
+    <br>
+{% endblock %}
+{% block foot %}
+{% endblock %}

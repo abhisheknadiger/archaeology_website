@@ -1,0 +1,26 @@
+{% extends 'archaeology/base.html' %}
+{% block title %} Library {% endblock %}
+{% block body %}
+    {% if all_library %}
+        {% for library in all_library %}
+            <div class="list-group">
+                <div class="row list-group-item" style="border: 2px solid black">
+                    <div class="col-sm-4">
+                        <img src="{{ library.photo.url }}" class ="img-circle" alt="{{ library.name }}">
+                    </div>
+                        <div class="col-sm-8">
+                            <div class="list-group">
+                                <a href="{% url 'archaeology:Library_details' library.id %}" class="list-group-item active">
+                                    <h4 class="list-group-item-heading">{{ library.name}}</h4>
+                                    <p class="list-group-item-text">{{ library.location }}</p>
+                                </a>
+                            </div>
+                        </div>
+                </div>
+            </div>
+
+        {% endfor %}
+    {% else %}
+        <h1>There are no libraries to display</h1>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'archaeology/base.html' %}
+{% block title %} Search Results {% endblock %}
+{% block body %}
+    {% if museum1 or monument1 or  artifact1 %}
+
+        {%   for monument in museum1 %}
+            <div style="margin : 20px; border: 2px 2px 2px 2px solid black">
+          <section >
+             <aside class="sidebar big-sidebar left-sidebar">
+               <img src="{{monument.photo.url }}" width="500" height="200">
+            </aside>
+            	<section id="content" class="two-column" >
+                    <ul> <h1> <a href="{% url 'archaeology:museum_details' monument.id %}">{{ monument.name }}</a>  </h1> </ul>
+                    <ul><h2> {{ monument.location }}</h2></ul>
+                </section>
+          </section>
+            </div>
+        {% endfor %}
+        {%   for monument in artifact1 %}
+            <div style="margin : 20px; border: 2px 2px 2px 2px solid black">
+          <section >
+             <aside class="sidebar big-sidebar left-sidebar">
+               <img src="{{monument.photo.url }}" width="500" height="200">
+            </aside>
+            	<section id="content" class="two-column" >
+                    <ul> <h1> <a href="{% url 'archaeology:artifact_details' monument.id %}">{{ monument.name }}</a>  </h1> </ul>
+                    <ul><h2> {{ monument.location }}</h2></ul>
+                </section>
+          </section>
+            </div>
+        {% endfor %}
+
+        {%   for monument in monument1 %}
+            <div style="margin : 20px; border: 2px 2px 2px 2px solid black">
+          <section >
+             <aside class="sidebar big-sidebar left-sidebar">
+               <img src="{{monument.photo.url }}" width="500" height="200">
+            </aside>
+            	<section id="content" class="two-column" >
+                    <ul> <h1> <a href="{% url 'archaeology:monument_details' monument.id %}">{{ monument.name }}</a>  </h1> </ul>
+                    <ul><h2> {{ monument.location }}</h2></ul>
+                </section>
+          </section>
+            </div>
+        {% endfor %}
+    {% else %}
+        <h1>There are no search result</h1>
+    {% endif %}
+{% endblock %}
+{% block foot %}
+{% endblock %}

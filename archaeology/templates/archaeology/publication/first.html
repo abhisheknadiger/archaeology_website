@@ -1,0 +1,20 @@
+{% extends 'archaeology/base.html' %}
+{% block title %}View publication{% endblock %}
+{% block body %}
+
+
+    <div class="row">
+        <div class="col-sm-6">
+            <h1 style=" font-family:'Oregano';color:black; text-align:center;">WELCOME</h1>
+            <h2 style="font-family:'Oregano';color: black;text-align:center;">to world  </h2>
+            <h2 style="font-family:'Oregano';color: black;text-align:center;">of Archaeology  </h2>
+
+        </div>
+        <div class="col-sm-6">
+            <h1 ><a style="color: black" href="{% url 'archaeology:publication' %}">View Publications</a> </h1>
+            <h1 ><a style="color: black" href="{% url 'archaeology:add_publication' %}">Publish a Paper</a> </h1>
+            <h1><a style="color: black" href="{% url 'archaeology:user_publication' %}">View your Publication</a> </h1>
+        </div>
+    </div>
+
+{% endblock %}

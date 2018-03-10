@@ -1,0 +1,9 @@
+{% extends 'archaeology/base.html' %}
+    {% load staticfiles %}
+ {% block style %}   <link rel="stylesheet" href="{% static 'archaeology/css/login.css' %}" type="text/css" />{% endblock %}
+    <meta charset="UTF-8">
+   {% block title %} Login Page
+    {% endblock %}
+{% block body %}
+<h3> Your have login successfully. Click <a href="{% url 'archaeology:home' %}">here</a> to continue</h3>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'archaeology/base.html' %}
+{% block title %}Projects{% endblock %}
+{% block body %}
+    {% if error_message %}
+        <h1>{{ error_message }}</h1>
+    {% else %}
+        <div class="container">
+  <h2>Projects</h2>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Working on</th>
+        <th>Started Date</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for project in project_details %}
+        <tr>
+            <th>{{ project.name }}</th>
+            <th>{{ project.working_on }}</th>
+            <th>{{ project.date }}</th>
+            <th>{{ project.desc }}</th>
+        </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+    {% endif %}
+{% endblock %}

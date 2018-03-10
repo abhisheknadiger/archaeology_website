@@ -1,0 +1,28 @@
+{% extends 'archaeology/base.html' %}
+{% block title %}Monument {% endblock %}
+{% block body %}
+
+{% if all_monument %}
+    <div class="container-fluid">
+    {% for museums in all_monument %}
+        <div class="list-group">
+            <div class="row list-group-item" style="border: 2px solid black " >
+                <div class="col-sm-4"> <img src="{{ museums.photo.url }}" class ="img-circle" alt="{{ museums.name }}" style="width: 200px;height: 200px"> </div>
+                <div class="col-sm-8">
+                    <div class="list-group">
+                        <a href="{% url 'archaeology:monument_details' museums.id %}" class="list-group-item active">
+                        <h4 class="list-group-item-heading">{{ museums.name }}</h4>
+                    <p class="list-group-item-text">{{ museums.location }}</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+         <BR><BR>
+    {% endfor %}
+    </div>
+{% else %}
+    <h1>There are no musuems to display</h1>
+{% endif %}
+
+{% endblock %}

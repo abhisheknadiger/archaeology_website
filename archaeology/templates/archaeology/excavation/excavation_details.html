@@ -1,0 +1,44 @@
+{% extends 'archaeology/base.html' %}
+{% block title %} {{ monument.name }} {% endblock %}
+{% block body %}
+{% load staticfiles %}
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-6">
+                <img src="{{ excavation.photo.url }}" style="width: 600px;height: 450px" alt="{{ excavation.name }}">
+            </div>
+            <div class="col-sm-6" >
+                <h1 style=""><font size="+7">{{ excavation.name }}</font></h1>
+                <h2>{{ excavation.location }}</h2>
+                {% if excavation.holiday %}
+                    It remains closed on {{ excavation.get_holiday_display }}
+                {% else %}
+                    It is open everyday
+                {% endif %}
+            <br>
+                <h2><a href="{% url 'archaeology:excavation_ticket'  excavation.pk%}">Buy Ticket</a></h2>
+            </div>
+        </div>
+    </div>
+    <br><br>
+    <br>
+    <h2 >Description</h2>
+    <fieldset>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8">{{ excavation.desc }}</div>
+            <div class="col-sm-2"></div>
+        </div>
+    </div>
+    </fieldset>
+
+
+
+
+    <br>
+    <br>
+{% endblock %}
+{% block foot %}
+{% endblock %}

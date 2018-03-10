@@ -1,0 +1,41 @@
+{% extends 'archaeology/base.html' %}
+{% block title %}Invoice {% endblock %}
+{% block body %}
+
+<div class="container">
+    <h2>Bill</h2>
+    <table class="table table-condensed">
+        <thead>
+        <tr>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Adult</td>
+            <td>{{ tic_object.ticket.adult_ticket_rate }}</td>
+            <td>{{ tic_object.adult_no }}</td>
+            <td>{{ adult_total }}</td>
+        </tr>
+        <tr>
+            <td>Child</td>
+            <td>{{ tic_object.ticket.child_ticket_rate }}</td>
+            <td>{{ tic_object.child_no }}</td>
+            <td>{{ child_total }}</td>
+        </tr>
+        <tr>
+        <td></td>
+        <td></td>
+        <td>Total</td>
+        <td>{{ tic_object.amount }}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+  <a href = "{% url 'archaeology:museum_ticket_download' tic_object.pk %}"> <button class = "btn btn-success" onclick=window.alert("Thank you for buying ticket ")>Download </button></a>
+
+{% endblock %}

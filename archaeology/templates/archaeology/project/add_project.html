@@ -1,0 +1,24 @@
+{% extends 'archaeology/base.html' %}
+{% block title %} Add Publication {% endblock %}
+{% block body %}
+
+                    <legend><h3>Add project</h3></legend>
+                    {% if error_message %}
+                        <div class="alert alert-warning">
+   {{ error_message }}
+</div>
+                    {% endif %}
+                    <form class="form-horizontal" role="form" action="{% url 'archaeology:add_project' %}" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {% include 'archaeology/form_template.html' %}
+                        <br>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-success">Submit</button>
+                            </div>
+                        </div><br>
+                    </form>
+
+
+
+{% endblock %}

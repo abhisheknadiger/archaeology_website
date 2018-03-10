@@ -1,0 +1,25 @@
+{% extends 'archaeology/base.html' %}
+{% block title %}{{ publication.name }}{% endblock %}
+{% block body %}
+   <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-6">
+              <embed src ="{{ publication.Abstract.url }}" style ="width: 400px;height:200px;"></embed>
+            </div>
+            <div class="col-sm-6" >
+                <h1 style=""><font size="+7">{{ publication.name }}</font></h1>
+                <h2>{{publication.user.get_username }}</h2>
+            <br>
+                <button type="button" class="btn btn-info" ><a href="{% url 'archaeology:detail_publication' publication.pk %}" >View details</a> </button>
+            </div>
+        </div>
+    </div>
+
+    <br><br>
+    <div class="container">
+    Description
+        <div class="well">
+            Description
+        </div>
+    </div>
+{% endblock %}
